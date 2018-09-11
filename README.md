@@ -1,1 +1,3 @@
 # ansible-arista-upgrade-eos
+
+#!!DANGER!! THIS PLAYBOOK REBOOTS SWITCHES! USE WITH CAUTION!
