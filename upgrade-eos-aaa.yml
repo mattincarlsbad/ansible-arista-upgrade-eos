@@ -1,0 +1,22 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: no
+
+  tasks:
+  - name: Download new eos image
+    eos_command:
+      commands: copy http://x.x.x.x/path/goes/here/EOS-4.19.9M.swi flash:EOS-4.19.9M.swi
+      provider: "{{ eos_connection_aaa }}"
+    
+  - name: Set boot system version
+    eos_config:
+      lines: 
+       - boot system flash:EOS-4.19.9M.swi
+      save_when: modified
+      provider: "{{ eos_connection_aaa }}"
+      
+  - name: Reload the switch
+    eos_command:
+      commands: reload in 1 force
+      provider: "{{ eos_connection_aaa }}"
