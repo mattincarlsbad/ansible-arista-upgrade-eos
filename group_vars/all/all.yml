@@ -1,0 +1,10 @@
+eos_connection_aaa:
+  host: "{{ ansible_host }}"
+  transport: eapi
+  validate_certs: No
+  authorize: yes
+  timeout: 600
+  username: usernamegoeshere
+#should use ansible vault for the passwords
+  password: passwordgoeshere
+  auth_pass: passwordgoeshere
